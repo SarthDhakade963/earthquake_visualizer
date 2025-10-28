@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Earthquake } from "@/types/earthquake";
-import { Range } from "react-range";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
@@ -25,36 +24,46 @@ export default function MapWithFilter({ data }: MapWithFilterProps) {
 
   return (
     <div className="space-y-4">
-      <div className="p-4 rounded-xl border bg-gray-50">
-        <div className="font-semibold mb-2">
-          Filter by Magnitude ({minMag.toFixed(1)} – {maxMag.toFixed(1)})
+      <div className="bg-white p-6 rounded-2xl border-2 border-gray-200 shadow-md">
+        <div className="flex items-center justify-between mb-4">
+          <div className="font-bold text-lg text-gray-800">
+            🎚️ Filter by Magnitude
+          </div>
+          <div className="text-2xl font-bold text-blue-600">
+            {minMag.toFixed(1)} – {maxMag.toFixed(1)}
+          </div>
         </div>
 
-        <Range
-          step={0.1}
-          min={0}
-          max={10}
-          values={[minMag, maxMag]}
-          onChange={([min, max]) => {
-            setMinMag(min);
-            setMaxMag(max);
-          }}
-          renderTrack={({ props, children }) => (
-            <div
-              {...props}
-              className="h-2 w-full bg-gray-300 rounded"
-              style={{ ...props.style }}
-            >
-              {children}
-            </div>
-          )}
-          renderThumb={({ props }) => (
-            <div
-              {...props}
-              className="h-4 w-4 bg-blue-600 rounded-full cursor-pointer"
-            />
-          )}
-        />
+        <div className="space-y-2">
+          <input
+            type="range"
+            min="0"
+            max="10"
+            step="0.1"
+            value={minMag}
+            onChange={(e) =>
+              setMinMag(Math.min(parseFloat(e.target.value), maxMag))
+            }
+            className="w-full h-3 bg-linear-to-r from-green-400 to-blue-500 rounded-lg appearance-none cursor-pointer"
+          />
+          <input
+            type="range"
+            min="0"
+            max="10"
+            step="0.1"
+            value={maxMag}
+            onChange={(e) =>
+              setMaxMag(Math.max(parseFloat(e.target.value), minMag))
+            }
+            className="w-full h-3 bg-linear-to-r from-blue-500 to-red-500 rounded-lg appearance-none cursor-pointer"
+          />
+        </div>
+
+        <div className="mt-4 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg border border-blue-100">
+          Showing{" "}
+          <span className="font-bold text-blue-600">{filtered.length}</span> of{" "}
+          <span className="font-bold">{data.length}</span> earthquakes
+        </div>
       </div>
 
       <MapView data={filtered} />

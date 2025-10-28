@@ -1,7 +1,7 @@
 export interface Earthquake {
   id: string;
-  mag: number | null;
-  place: string | null;
+  mag: number;
+  place: string;
   time: number;
   latitude: number;
   longitude: number;
