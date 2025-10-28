@@ -18,7 +18,7 @@ interface USGSResponse {
   features: USGSFeature[];
 }
 
-export async function fetchEarthquake(
+export async function fetchEarthquakes(
   period: Period = "all_day"
 ): Promise<Earthquake[]> {
   const url = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${period}.geojson`;

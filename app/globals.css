@@ -1,10 +1,9 @@
 @import "leaflet/dist/leaflet.css";
 
-@taiwind tailwindcss/preflight"
-@tailwind utilities;
+@import "tailwindcss/preflight";
 @tailwind utilities;
 
 .map-full {
-  height: 80vh;
+  height: 100vh;
   width: 100%;
 }
