@@ -29,7 +29,7 @@ export async function fetchEarthquakes(
     throw new Error(`Failed to fetch the data`);
   }
 
-  const data: USGSResponse[] = await res.json();
+  const data: USGSResponse = await res.json();
 
   return data.features.map((feature: USGSFeature) => {
     const [longitude, latitude, depth] = feature.geometry.coordinates;
