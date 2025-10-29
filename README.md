@@ -63,7 +63,7 @@ earthquake-visualizer/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/earthquake-visualizer.git
+git clone https://github.com/SarthDhakade963/earthquake-visualizer.git
 cd earthquake-visualizer
 ```
 
