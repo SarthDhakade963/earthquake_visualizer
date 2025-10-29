@@ -39,7 +39,6 @@ const MapInner: React.FC<MapViewProps> = ({ data }) => {
 
   return (
     <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-200 relative group">
-      {/* Data counter badge */}
       <div className="absolute top-4 left-4 z-1000 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-gray-200">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
@@ -49,7 +48,6 @@ const MapInner: React.FC<MapViewProps> = ({ data }) => {
         </div>
       </div>
 
-      {/* Empty state overlay */}
       {data.length === 0 && (
         <div className="absolute inset-0 z-1000 bg-white/90 backdrop-blur-sm flex items-center justify-center">
           <div className="text-center p-8">
@@ -91,7 +89,6 @@ const MapInner: React.FC<MapViewProps> = ({ data }) => {
             >
               <Popup>
                 <div className="min-w-[240px] p-2">
-                  {/* Header with magnitude badge */}
                   <div className="flex items-start justify-between gap-3 mb-3 pb-3 border-b-2 border-gray-100">
                     <div className="flex-1">
                       <div className="font-bold text-base text-gray-800 mb-1">
@@ -109,7 +106,6 @@ const MapInner: React.FC<MapViewProps> = ({ data }) => {
                     </div>
                   </div>
 
-                  {/* Details grid */}
                   <div className="space-y-2">
                     <div className="bg-linear-to-r from-gray-50 to-white p-2.5 rounded-lg">
                       <div className="flex items-center justify-between">
@@ -145,7 +141,6 @@ const MapInner: React.FC<MapViewProps> = ({ data }) => {
         })}
       </MapContainer>
 
-      {/* Hover instruction tooltip */}
       <div className="absolute bottom-4 right-4 z-1000 bg-black/75 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         Click markers for details
       </div>
